@@ -34,6 +34,6 @@
 - [x] API Set Address Utama
 
 ## Authentication Google
-- [] Create Credential Google
-- [] Create Config Google
-- [] Create API
+- [x] Create Credential Google
+- [x] Create Config Google
+- [x] Create API
