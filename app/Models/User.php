@@ -79,4 +79,9 @@ class User extends Authenticatable
 
         return asset('storage/' . $this->photo);
     }
+
+    public function addresses()
+    {
+        return $this->hasMany(Address::class);
+    }
 }
