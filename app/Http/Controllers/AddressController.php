@@ -3,12 +3,39 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
+use App\Models\Province;
 use Illuminate\Http\Request;
 use App\ResponseFormatter;
 use Illuminate\Support\Facades\Validator;
 
-class AddressController extends Controller
+class  AddressController extends Controller
 {
+
+    public function getProvince()
+    {
+        $provinces = Province::all();
+
+        return ResponseFormatter::success($provinces->pluck('api_response'));
+    }
+
+    public function getCity()
+    {
+        $query = City::query();
+        if(request()->province_uuid) {
+            $query->whereIn('province_id', function($subQuery){
+                $subQuery->from('provinces')->where('uuid', request()->province_uuid)->select('id');
+            });
+        }
+
+        if(request()->search) {
+            $query->where('name', 'like', '%'.request()->search.'%');
+        }
+
+        $cities = $query->get();
+
+        return ResponseFormatter::success($cities->pluck('api_response'));
+    }
+
     /**
      * Display a listing of the resource.
      */

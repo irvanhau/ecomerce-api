@@ -35,5 +35,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::patch('profile', [ProfileController::class, 'updateProfile']);
 
     Route::apiResource('address', AddressController::class);
-    Route::post('address/{uuid}/set-default', [AddressController::class, 'setDefault']) ;
+    Route::post('address/{uuid}/set-default', [AddressController::class, 'setDefault']);
+
+    Route::get('province', [AddressController::class, 'getProvince']);
+    Route::get('city', [AddressController::class, 'getCity']);
 });
