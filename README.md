@@ -40,8 +40,8 @@
 
 ## API Product
 - [x] Migration & Model: Product, Image, Variations, Review
-- [ ] Dummy Files
-- [ ] Seeder Product
+- [x] Dummy Files
+- [x] Seeder Product
 - [ ] API Explore Product
 - [ ] API Detail Product
 - [ ] API Product Review

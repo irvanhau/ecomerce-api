@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('slug');
             $table->string('name');
             $table->decimal('price',8,2);
-            $table->decimal('price_sale',8,2);
-            $table->integer('quantity')->default(0);
+            $table->decimal('price_sale',8,2)->nullable();
+            $table->integer('stock')->default(0);
             $table->unsignedBigInteger('category_id');
             $table->text('description')->nullable();
             $table->decimal('weight',8,2)->nullable();
