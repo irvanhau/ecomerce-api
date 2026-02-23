@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->uuid('uuid')->default(\Illuminate\Support\Facades\DB::raw('UUID()'));
+            $table->uuid('uuid')->default(\DB::raw('(UUID())'));
             $table->unsignedBigInteger('seller_id');
             $table->string('slug');
             $table->string('name');
