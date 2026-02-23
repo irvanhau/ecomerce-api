@@ -37,3 +37,12 @@
 - [x] Create Credential Google
 - [x] Create Config Google
 - [x] Create API
+
+## API Product
+- [x] Migration & Model: Product, Image, Variations, Review
+- [ ] Dummy Files
+- [ ] Seeder Product
+- [ ] API Explore Product
+- [ ] API Detail Product
+- [ ] API Product Review
+- [ ] API Seller

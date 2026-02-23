@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Product\Review;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -68,6 +69,20 @@ class User extends Authenticatable
             'store_name' => $this->store_name,
             'gender' => $this->gender,
             'birth_date' => $this->birth_date
+        ];
+    }
+
+    public function getApiResponseAsSellerAttribute()
+    {
+        $productIds = $this->products()->pluck('id');
+        return [
+            'username' => $this->username,
+            'store_name' => $this->store_name,
+            'photo_url' => $this->photo_url,
+            'product' => $this->products()->count(),
+            'rating_count' => Review::whereIn('product_id', $productIds)->count(),
+            'join_date' => $this->created_at->diffForHumans(),
+            'send_from' => optional($this->addresses()->where('is_default', true)->first())->getApiResponseAttribute(),
         ];
     }
 
